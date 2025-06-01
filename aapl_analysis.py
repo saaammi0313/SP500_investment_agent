@@ -71,15 +71,15 @@ class StockDataFetcher:
             return {'major_holders': None, 'institutional_holders': None}
     
     def get_earnings_data(self) -> Dict[str, Optional[pd.DataFrame]]:
-        """Get earnings dates and estimates."""
+        """Get earnings dates and related information."""
         try:
             return {
                 'earnings_dates': self.stock.earnings_dates,
-                'earnings_estimates': self.stock.earnings_estimates
+                # earnings_estimates is not available in yfinance
             }
         except Exception as e:
             print(f"Error fetching earnings data: {e}")
-            return {'earnings_dates': None, 'earnings_estimates': None}
+            return {'earnings_dates': None}
     
     def get_news(self) -> list:
         """Get company news."""
